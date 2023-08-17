@@ -12,7 +12,7 @@
 
 <body>
     <div class="input">
-        <form action="" id="city-form">
+        <form action="" method="post" id="city-form">
             <input type="text" name="city" id="input" placeholder="Enter a city name" />
             <input type="submit" value="Submit" id="button" />
         </form>
@@ -60,7 +60,7 @@
         <div class="today" id="current-temp">
             <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon" />
             <div class="other">
-                <div class="day">Monday</div>
+                <div class="day">Today</div>
                 <div class="temp" id="today-temp">Day - 22°C</div>
             </div>
         </div>
@@ -97,6 +97,8 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="script.js"></script>
 </body>
 

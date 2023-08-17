@@ -4,20 +4,32 @@ let cityDocument = document.querySelector("#time-zone");
 let citySearch = document.querySelector("#input");
 let formDocument = document.querySelector("#city-form");
 let weatherDocument = document.querySelector("#today-temp");
+let apiKey = "6330484588203ae9bc8288a285d5dc8b";
 
-let weekdayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let monthArray = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
+
+let weekdayArray = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
 ];
-
-let weather = {
-    paris: { temp: 19, humidity: 80 },
-    tokyo: { temp: 17, humidity: 50 },
-    lisbon: { temp: 30, humidity: 20 },
-    "san francisco": { temp: 20, humidity: 100 },
-    oslo: { temp: -5, humidity: 20 },
-    bogota: { temp: 22, humidity: 50 }
-};
+let monthArray = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec"
+];
 
 let date = new Date();
 let week_day = date.getDay();
@@ -41,20 +53,13 @@ formDocument.addEventListener("submit", getCity);
 
 function getCity(event) {
     event.preventDefault();
-    let city = citySearch.value.toLowerCase();
-    let found = false;
+    citySearch = citySearch.value;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&units=metric&appid=${apiKey}`;
+    axios.get(apiUrl).then(showWeather);
+}
 
-    for (const place in weather) {
-        if (place === city) {
-            city = city.toUpperCase();
-            cityDocument.innerHTML = `${city}`;
-            weatherDocument.innerHTML = `Day - ${weather[place].temp}°C`;
-            found = true;
-            break;
-        }
-    }
-
-    if (!found) {
-        alert(`Sorry, we don't know the weather for this city, try going to https://www.google.com/search?q=weather+${city}`);
-    }
+function showWeather(response) {
+    console.log(response.data);
+    cityDocument.innerHTML = response.data.name;
+    weatherDocument.innerHTML = `${Math.round(response.data.main.temp)}°C`;
 }
