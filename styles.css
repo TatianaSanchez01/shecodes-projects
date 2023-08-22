@@ -20,6 +20,10 @@ li {
     text-align: left;
 }
 
+li::first-letter {
+    text-transform: capitalize;
+}
+
 .weather-app {
     border: 2px solid #ccc;
     max-width: 600px;
