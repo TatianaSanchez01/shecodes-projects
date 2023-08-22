@@ -1,11 +1,12 @@
 let temp = document.querySelector("#temperature");
+let icon = document.querySelector("#weather-icon");
 let time = document.querySelector("#time");
 let city = document.querySelector("#city");
 let precipitation = document.querySelector("#weather-precipitation");
 let humidity = document.querySelector("#weather-humidity");
 let wind = document.querySelector("#weather-wind");
 let description = document.querySelector("#weather-description");
-let cityInput = "La Ceja";
+let cityInput = "Bogota";
 
 let apiKey = "6330484588203ae9bc8288a285d5dc8b";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=metric&appid=${apiKey}`;
@@ -19,6 +20,11 @@ function displayTemperature(response) {
     humidity.innerHTML = `Humidity: ${response.data.main.humidity}`;
     wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
     time.innerHTML = formatDate(response.data.dt * 1000);
+    icon.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    icon.setAttribute("alt", response.data.weather[0].description);
     console.log(response.data);
 }
 
