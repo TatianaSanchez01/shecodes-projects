@@ -18,6 +18,16 @@
 
     <div class="container">
         <div class="weather-app">
+            <form id="search-form" class="mb-3">
+                <div class="row">
+                    <div class="col-9">
+                        <input type="search" placeholder="Type a city.." class="form-control" id="city-input">
+                    </div>
+                    <div class="col-3"><input type="submit" value="Search" class="btn btn-primary w-100 col-3"></div>
+                </div>
+            </form>
+
+
             <h1 id="city">New York, USA</h1>
             <ul>
                 <li id="time">Friday 05:00</li>
@@ -26,7 +36,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="d-flex weather-temperature">
-                        <img src="/" alt="weather icon" id="weather-icon" />
+                        <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" id="weather-icon" />
                         <div>
                             <strong id="temperature">20</strong><span class="units">°C</span>
                         </div>
@@ -34,7 +44,8 @@
                 </div>
                 <div class="col-6">
                     <ul>
-                        <li id="weather-precipitation">Precipitation: 0%</li>
+                        <li id="sunrise">Sunrise: 06:00</li>
+                        <li id="sunset">Sunset: 18:00%</li>
                         <li id="weather-humidity">Humidity: 73%</li>
                         <li id="weather-wind">Wind: 2 km/h</li>
                     </ul>
@@ -47,8 +58,6 @@
                 Tatiana Sanchez
             </small>
         </div>
-
-
     </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
