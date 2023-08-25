@@ -90,3 +90,28 @@ input[type="submit"]:hover {
     color: #191414;
     font-weight: bold;
 }
+
+.weather-forecast {
+    margin-top: 25px;
+    text-align: center;
+    color: #141919;
+}
+
+.weather-forecast-date {
+    font-size: 16px;
+    background-color: #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.weather-forecast-temperatures{
+    font-size: 13px;
+}
+
+.weather-high-temp{
+    opacity: 0.8;
+}
+.weather-low-temp{
+    opacity: 0.5;
+
+}
