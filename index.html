@@ -21,7 +21,7 @@
             <form id="search-form" class="mb-3">
                 <div class="row">
                     <div class="col-9">
-                        <input type="search" placeholder="Type a city.." class="form-control" id="city-input">
+                        <input type="search" placeholder="Type a city.." class="form-control" id="city-input" required>
                     </div>
                     <div class="col-3"><input type="submit" value="Search" class="btn btn-primary w-100 col-3"></div>
                 </div>
@@ -34,15 +34,17 @@
                 <li id="weather-description">Clear</li>
             </ul>
             <div class="row">
-                <div class="col-6">
+                <div class="col-7">
                     <div class="d-flex weather-temperature">
                         <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" id="weather-icon" />
                         <div>
-                            <strong id="temperature">20</strong><span class="units">°C</span>
+                            <strong id="temperature">20</strong>
+                            <span class="units"> <a href="#" id="celsius-link" class="active">°C </a> | <a href="#"
+                                    id="farenheit-link">°F</a></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-5 weather-data">
                     <ul>
                         <li id="sunrise">Sunrise: 06:00</li>
                         <li id="sunset">Sunset: 18:00%</li>
