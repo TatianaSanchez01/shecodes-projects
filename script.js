@@ -10,6 +10,7 @@ let description = document.querySelector("#weather-description");
 let farenheitLink = document.querySelector("#farenheit-link");
 let celsiusLink = document.querySelector("#celsius-link");
 let form = document.querySelector("#search-form");
+let forecast = document.querySelector("#forecast");
 
 form.addEventListener("submit", handleSubmit);
 farenheitLink.addEventListener("click", displayFarenheitTemp);
@@ -31,6 +32,8 @@ function displayTemperature(response) {
     );
     icon.setAttribute("alt", response.data.weather[0].description);
     console.log(response.data);
+
+
 }
 
 function formatDate(timestamp) {
@@ -78,3 +81,27 @@ function displayCelsiusTemp(event) {
     farenheitLink.classList.remove("active");
 }
 
+function displayForecast() {
+    let forecastHtml = `<div class="row">`;
+    let days = ["Thu", "Fri", "Sat"];
+    days.forEach(function (day) {
+        forecastHtml = forecastHtml +
+            `
+        <div class="col-2">
+            <div class="weather-forecast-date">
+                <h4>${day}</h4>
+                <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" width="45">
+                <div class="weather-forecast-temperatures">
+                    <span class="weather-high-temp">18°</span> - <span class="weather-low-temp">12°</span>
+                </div>
+            </div>
+        </div>
+    `;
+
+    });
+    forecastHtml = forecastHtml + `</div>`;
+    forecast.innerHTML = forecastHtml;
+
+}
+
+displayForecast();
