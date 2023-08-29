@@ -7,14 +7,11 @@ let sunsetElement = document.querySelector("#sunset");
 let humidityElement = document.querySelector("#weather-humidity");
 let windElement = document.querySelector("#weather-wind");
 let descriptionElement = document.querySelector("#weather-description");
-let farenheitLink = document.querySelector("#farenheit-link");
-let celsiusLink = document.querySelector("#celsius-link");
 let formElement = document.querySelector("#search-form");
 let forecastElement = document.querySelector("#forecast");
 
 formElement.addEventListener("submit", handleSubmit);
-farenheitLink.addEventListener("click", displayFarenheitTemp);
-celsiusLink.addEventListener("click", displayCelsiusTemp);
+
 let ceulsiusTemperature = tempElement;
 
 function search(city) {
@@ -31,7 +28,7 @@ function getForecast(coordinates) {
 }
 
 function displayTemperature(response) {
-    ceulsiusTemperature = Math.round(response.data.main.temp);
+    
     tempElement.innerHTML = Math.round(response.data.main.temp);
     cityElement.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
     descriptionElement.innerHTML = `${response.data.weather[0].description}`;
@@ -103,19 +100,5 @@ function handleSubmit(event) {
     search(cityInput.value);
 }
 
-function displayFarenheitTemp(event) {
-    event.preventDefault();
-    let farenheitTemperature = (ceulsiusTemperature * 9) / 5 + 32;
-    tempElement.innerHTML = Math.round(farenheitTemperature);
-    celsiusLink.classList.remove("active");
-    farenheitLink.classList.add("active");
-}
-
-function displayCelsiusTemp(event) {
-    event.preventDefault();
-    tempElement.innerHTML = ceulsiusTemperature;
-    celsiusLink.classList.add("active");
-    farenheitLink.classList.remove("active");
-}
 
 displayForecast();
